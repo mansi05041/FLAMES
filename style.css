@@ -1,0 +1,112 @@
+:root {
+  --peach : #FDD2BF;
+  --dark-peach : #E98580;
+  --very-dark-peach : #DF5E5E;
+  --brown : #492F10;
+  --white : #ffffff;
+  --main-font : "Poppins";
+  --secondary-font : "Dancing Script";
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  text-align: center;
+  color: var(--brown);
+  font-family:var(--main-font);
+}
+
+/* heading */
+#heading{
+  padding: 5% 6%;
+  background:linear-gradient(var(--peach),var(--dark-peach),var(--very-dark-peach));
+}
+
+h1{
+  font-family:var(--secondary-font);
+  font-size:4rem;
+  font-weight:600;
+}
+
+h3{
+  font-size:2.5rem;
+  font-weight:400;
+}
+
+/* form */
+#form{
+  padding: 9% 6%;
+  background-color:var(--white);
+}
+
+.card{
+  text-align: left;
+  border :3px solid var(--very-dark-peach);
+  padding: 4% 3%;
+}
+
+label{
+  color:var(--dark-peach);
+  font-weight:600;
+}
+
+.form-control:focus {
+  border-color : var(--peach);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.form-control::placeholder {
+  color: var(--peach);
+  opacity: 0.5;
+}
+
+button{
+  margin-top: 5%;
+  border-radius: 1.75rem;
+  color: var(--brown);
+  font-weight:600;
+  font-size:1rem;
+  background-color: var(--peach);
+  padding: 0.65rem 2.5rem;
+  text-decoration: none;
+  border: 1px solid var(--dark-peach);
+}
+
+button:hover{
+  color:var(--white);
+  background-color: var(--very-dark-peach);
+  border-color: var(--brown);
+}
+
+/*result*/
+#result{
+  padding:7% 6%;
+  background: linear-gradient(var(--very-dark-peach),var(--dark-peach),var(--peach));
+}
+
+h2{
+  font-size:3.5rem;
+  font-family:var(--secondary-font);
+  font-weight:700;
+}
+
+#result p{
+  font-size:2.5rem;
+  font-weight:500;
+}
+
+.status:hover{
+  opacity:0.5;
+}
+/*footer*/
+footer{
+  padding:4% 6%;
+  color:var(--peach);
+  background-color:var(--white);
+}
+
+.author:hover{
+  color:var(--dark-peach);
+}
