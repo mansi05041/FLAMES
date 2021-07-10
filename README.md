@@ -17,7 +17,7 @@ This is a fun project based on FLAMES algorithm !!!
 FLAMES : It's game popular among teenagers to know about the relationship status.
 There are two steps in this game:
 
-Take the two names.
+- Take the two names.
 - Remove the common characters with their respective common occurrences.
 - Get the count of the characters that are left .
 - Take FLAMES letters as [“F”, “L”, “A”, “M”, “E”, “S”]
