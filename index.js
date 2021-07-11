@@ -10,8 +10,8 @@ function result(){
   else{
     //algorithm of game
     var arr = ["F","L","A","M","E","S"];
-    const name1 = document.querySelector(".name1").value.split("");
-    const name2 = document.querySelector(".name2").value.split("");
+    const name1 = document.querySelector(".name1").value.toLowerCase().split("");
+    const name2 = document.querySelector(".name2").value.toLowerCase().split("");
     //deleting common words
     for (var i = 0; i<name1.length; i++){
       for (var j = 0; j<name2.length; j++){
