@@ -36,7 +36,7 @@ There are two steps in this game:
 
 ## My process
 
-To make website i used Bootstrap for form input & apply the game algorithm to f=get result.
+To make website i used Bootstrap for form input & apply the game algorithm to get result.
 
 ### Built with
 
@@ -100,7 +100,8 @@ To make website i used Bootstrap for form input & apply the game algorithm to f=
 
 ### Continued development
 
-Improvement in Responsive Area
+Improvement in Responsive Area 
+This project is still under construction
 
 ### Useful resources
 
