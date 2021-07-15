@@ -1,83 +1,133 @@
 //hiding the result section
-document.querySelector("#result").style.display="none";
+document.querySelector("#result").style.display = "none";
 
 //on clicking the button
-function result(){
-  var sentence = document.querySelector(".status");
-  if ((document.querySelector(".name1").value === "")||(document.querySelector(".name2").value === "")){
-    sentence.innerHTML = "Invalid Inputs!!!!";
+function result() {
+  if ((document.querySelector(".name1").value === "") || (document.querySelector(".name2").value === "")) {
+    alert("Invalid inputs!!!");
   }
-  else{
-    //algorithm of game
-    var arr = ["F","L","A","M","E","S"];
+
+  //algorithm of game
+  else {
     const name1 = document.querySelector(".name1").value.toLowerCase().split("");
     const name2 = document.querySelector(".name2").value.toLowerCase().split("");
+
     //deleting common words
-    for (var i = 0; i<name1.length; i++){
-      for (var j = 0; j<name2.length; j++){
-        if (name1[i]===name2[j]){
-        name1.splice(i,1);
-        name2.splice(j,1);
+    for (var i = 0; i < name1.length; i++) {
+      for (var j = 0; j < name2.length; j++) {
+        if (name1[i] === name2[j]) {
+          name1.splice(i, 1, "$");
+          name2.splice(j, 1, "$");
         }
       }
     }
-    //removing extra spaces
-    if (name1.includes(" ")===true){
-      name1.splice(name1.indexOf(" "),1);
-    }
-    if (name2.includes(" ")===true){
-      name2.splice(name2.indexOf(" "),1);
-    }
-    var total = name1.length + name2.length;
-    var counter = 0;
-    //getting status
-    while(arr.length!==1){
-      if (arr.length<total){
-        var rem = total%arr.length;
-        arr.splice(rem-1,1);
-        counter=rem-1;
-      }
-      else if(arr.length===total){
-        arr.pop();
-        counter=0;
-      }
-      else{
-        arr.splice(total-1,1);
-        counter=total-1;
-      }
-      if (counter<0){
-        counter=0;
-      }
-      if (counter!==0){
-        const arr1 = arr.slice(0,counter);
-        const arr2 = arr.slice(counter,arr.length);
-        arr = arr2.concat(arr1);
-      }
-    }
-    var status = arr.toString();
-    if (status==="F"){
-      sentence.innerHTML = "FRIENDS";
-    }
-    if (status==="L"){
-      sentence.innerHTML = "LOVE";
-    }
-    else if (status==="A"){
-      sentence.innerHTML = "AFFECTION";
-    }
-    else if (status==="M"){
-      sentence.innerHTML = "MARRIAGE";
-    }
-    else if (status==="E"){
-      sentence.innerHTML = "ENEMY";
-    }
-    else{
-      sentence.innerHTML = "SIBLINGS";
-    }
-  }
 
-  //display the result
-  location.href = "#result";
-  document.querySelector("#result").style.display="block";
+    //removing extra spaces
+    var name = name1.concat(name2);
+    for (i = 0; i < name.length; i++) {
+      if (name1[i] === " ") {
+        name.splice(i, 1);
+      }
+    }
+
+    //counting total words in both names
+    var total = 0;
+    for (i = 0; i < name.length; i++) {
+      if (name[i] !== '$') {
+        total += 1;
+      }
+    }
+
+    //function for get_concat
+    function get_concat(a,c){
+      var a1=a.slice(0,counter);
+      var a2=a.slice(counter,a.length);
+      return(a2.concat(a1));
+    }
+
+    //getting status
+    var arr = ["F","L","A","M","E","S"];
+    var counter =0;
+    var place ="X"; // counter index value
+    while (arr.length!==1){
+      if (counter!==0){
+        arr= get_concat(arr,counter);
+        counter=0;
+      }
+      if (total===arr.length){
+        arr.splice(arr.length-1,1," ");
+        counter =0;
+      }
+      if (total<arr.length){
+        var s = total-1;
+        while(s<arr.length){
+          counter = s+1;
+          arr.splice(s,1," ");
+          s+=total;
+        }
+        if (counter>=arr.length){
+          counter=0;
+        }
+      }
+      if (total>arr.length){
+        var r = total%arr.length;
+        if (r===0){
+          arr.splice(arr.length-1,1," ");
+          counter=0;
+        }
+        else{
+          counter = r;
+          arr.splice(r-1,1," ");
+        }
+      }
+      place = arr[counter];
+
+      //remove spaces
+      for (i=0; i<arr.length; i++){
+        if (arr[i]===" "){
+          arr.splice(i,1);
+        }
+      }
+
+      //counter update
+      counter = arr.indexOf(place);
+    }
+
+    //getting message
+    var status = arr.toString();
+    var message = " ";
+    switch (status) {
+      case "F":
+        message = "Friends";
+        break;
+      case "L":
+        message = "In Love";
+        break;
+      case "A":
+        message = "Attracted to each other";
+        break;
+      case "M":
+        message = "Married";
+        break;
+      case "E":
+        message = "Enemies";
+        break;
+      case "S":
+        message = "Siblings";
+        break;
+      default:
+        message = "In No Relationship";
+    }
+
+    //display the proper message
+    document.querySelector(".person1").innerHTML = document.querySelector(".name1").value;
+    document.querySelector(".person2").innerHTML = document.querySelector(".name2").value;
+    document.querySelector(".status").innerHTML = message;
+
+    //display the result section
+    location.href = "#result";
+    document.querySelector("#result").style.display = "block";
+  }
 
   //clearing the input
   document.querySelector(".name1").value = "";
