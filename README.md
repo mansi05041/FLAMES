@@ -32,7 +32,7 @@ There are two steps in this game:
 ### Links
 
 - Solution URL: [https://github.com/mansi05041/FLAMES]
-- Live Site URL: [https://mansi05041.github.io/FLAMES/]
+- Live Site URL: [https://flames-pi.vercel.app/]
 
 ## My process
 
@@ -49,59 +49,59 @@ To make website i used Bootstrap for form input & apply the game algorithm to ge
 ### What I learned
 
 ```js
- else{
-    //algorithm of game
+ //getting status
     var arr = ["F","L","A","M","E","S"];
-    const name1 = document.querySelector(".name1").value.split("");
-    const name2 = document.querySelector(".name2").value.split("");
-    //deleting common words
-    for (var i = 0; i<name1.length; i++){
-      for (var j = 0; j<name2.length; j++){
-        if (name1[i]===name2[j]){
-        name1.splice(i,1);
-        name2.splice(j,1);
+    var counter =0;
+    var place ="X"; // counter index value
+    while (arr.length!==1){
+      if (counter!==0){
+        arr= get_concat(arr,counter);
+        counter=0;
+      }
+      if (total===arr.length){
+        arr.splice(arr.length-1,1," ");
+        counter =0;
+      }
+      if (total<arr.length){
+        var s = total-1;
+        while(s<arr.length){
+          counter = s+1;
+          arr.splice(s,1," ");
+          s+=total;
+        }
+        if (counter>=arr.length){
+          counter=0;
         }
       }
+      if (total>arr.length){
+        var r = total%arr.length;
+        if (r===0){
+          arr.splice(arr.length-1,1," ");
+          counter=0;
+        }
+        else{
+          counter = r;
+          arr.splice(r-1,1," ");
+        }
+      }
+      place = arr[counter];
+
+      //remove spaces
+      for (i=0; i<arr.length; i++){
+        if (arr[i]===" "){
+          arr.splice(i,1);
+        }
+      }
+
+      //counter update
+      counter = arr.indexOf(place);
     }
-    //removing extra spaces
-    if (name1.includes(" ")===true){
-      name1.splice(name1.indexOf(" "),1);
-    }
-    if (name2.includes(" ")===true){
-      name2.splice(name2.indexOf(" "),1);
-    }
-    var total = name1.length + name2.length;
-    var counter = 0;
-    //getting status
-    while(arr.length!==1){
-      if (arr.length<total){
-        var rem = total%arr.length;
-        arr.splice(rem-1,1);
-        counter=rem-1;
-      }
-      else if(arr.length===total){
-        arr.pop();
-        counter=0;
-      }
-      else{
-        arr.splice(total-1,1);
-        counter=total-1;
-      }
-      if (counter<0){
-        counter=0;
-      }
-      if (counter!==0){
-        const arr1 = arr.slice(0,counter);
-        const arr2 = arr.slice(counter,arr.length);
-        arr = arr2.concat(arr1);
-      }
-    }
+
 ```
 
 ### Continued development
 
-Improvement in Responsive Area 
-This project is still under construction
+Improvement in Responsive Area.
 
 ### Useful resources
 
