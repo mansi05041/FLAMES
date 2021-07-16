@@ -26,8 +26,10 @@ There are two steps in this game:
 
 
 ### Screenshot
-
+-on desktop
 ![](./Flames_ss.png)
+-on mobile
+![](./mobile.png)
 
 ### Links
 
