@@ -6,6 +6,7 @@
   --white : #ffffff;
   --main-font : "Poppins";
   --secondary-font : "Dancing Script";
+  --author-font :'Fuggles', 'cursive';
 }
 
 html, body {
@@ -105,6 +106,12 @@ footer{
   padding:4% 6%;
   color:var(--peach);
   background-color:var(--white);
+}
+
+.author{
+  font-family: var(--author-font);
+  font-weight: 700;
+  font-size: 3.5rem;
 }
 
 .author:hover{
