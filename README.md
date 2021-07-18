@@ -26,9 +26,9 @@ There are two steps in this game:
 
 
 ### Screenshot
-##desktop
+## desktop
 ![desktop](./screenshot/desktop.png)
-##mobile
+## mobile
 ![mobile](./screenshot/mobile.png)
 
 ### Links
